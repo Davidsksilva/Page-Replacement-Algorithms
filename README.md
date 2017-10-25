@@ -34,7 +34,7 @@ And repeat
 
 ## Authors
 
-* **David Simon** - *Initial work* - [Davidsksilva](https://github.com/Davidsksilva)
+* **David Simon** - *Whole Project* - [Davidsksilva](https://github.com/Davidsksilva)
 
 ## License
 
