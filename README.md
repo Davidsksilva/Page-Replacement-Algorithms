@@ -1,6 +1,6 @@
 # Page Replacement Algorithms
 
-This code is a project for the discipline Analysis and Project of Algorithms, in the Federal University of Paraiba, Brazil.
+This code is a project for the discipline Operational Systems, in the Federal University of Paraiba, Brazil.
 
 ## Getting Started
 
