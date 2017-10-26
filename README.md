@@ -46,7 +46,7 @@ And next:
 
 ## Special Thanks
 
-Special thanks to my girlfrind Nadja, for the moral suport!
+Special thanks to my girlfriend Nadja, for the moral suport!
 
 ## License
 
