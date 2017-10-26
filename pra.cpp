@@ -2,6 +2,8 @@
 #include <fstream>
 #include <queue>
 
+#define INT_MAX 2147483647
+
 void PRA::getData(std::string fileName){
   std::ifstream file(fileName);
   int aux = 0;
@@ -48,11 +50,11 @@ void PRA::FIFO(){
   for(unsigned int i=0;i<Sequence->size(); i++){
     if(checkInTable((*Sequence)[i]) == -1){ // If sequence number is not in Table
       pageLacks++;
-      if(checkTableEmpty() != -1){ // If Table not empty
+      if(checkTableEmpty() != -1){ // If Table not full
         Table[checkTableEmpty()]=(*Sequence)[i];
         fifo.push((*Sequence)[i]);
       }
-      else{ // If Table empty
+      else{ // If Table full
         pos = checkInTable(fifo.front());
         Table[pos] = (*Sequence)[i];
         fifo.pop();
@@ -64,5 +66,39 @@ void PRA::FIFO(){
 }
 void PRA::OTM(){
   std::fill(Table, Table + nBlocks, -1);
-
+  pageLacks=0;
+  for(unsigned int i=0;i<Sequence->size(); i++){
+    if(checkInTable((*Sequence)[i]) == -1){ // If sequence number is not in Table
+      pageLacks++;
+      if(checkTableEmpty() != -1){ // If Table not full
+        Table[checkTableEmpty()]=(*Sequence)[i];
+      }
+      else{ // If Table full
+        int timeNextCall[nBlocks]={0};
+        for(int j=0;j<nBlocks;j++){
+          for(unsigned int u=i;u<Sequence->size();u++){
+              if((*Sequence)[u] == Table[j]){
+                timeNextCall[j]=u;
+              }
+          }
+        }
+        int posID=0;
+        int posTimeNextCall=0;
+        for(int j=0;j<nBlocks;j++){
+          if(timeNextCall[j]== 0){
+            posID=j;
+            posTimeNextCall=INT_MAX;
+          }
+          else{
+            if(timeNextCall[j] > posTimeNextCall){
+              posID=j;
+              posTimeNextCall=timeNextCall[j];
+            }
+          }
+        }
+        Table[posID]=(*Sequence)[i];
+      }
+    }
+  }
+  std::cout<<"OTM "<<pageLacks<<std::endl;
 }

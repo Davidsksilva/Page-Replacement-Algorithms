@@ -1,6 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+
+struct Page{
+  int id;
+  int counter;
+};
+
 class PRA{
   int timeCounter = 0;
   int nBlocks = 0;
@@ -14,5 +20,6 @@ public:
   PRA(std::string);
   void FIFO(void);
   void OTM(void);
+  void LRU(void);
   void getData(std::string);
 };
