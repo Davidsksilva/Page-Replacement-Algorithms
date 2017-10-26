@@ -7,6 +7,8 @@ This code is a project for the discipline Operational Systems, in the Federal Un
 When the computer refers to a page in the page table, sometimes the refered page is not located in the table. If there is a free block in the page table, the refered page will be loaded into that block, but when the table is full, and the refered page is not there, a page replacement will be needed. We will cover three of them:
 
 * **FIFO** When a page replacement is needed, the oldest(first) page in the table will be replaced by the refered page.
+* **OTM** A theorical algorithms, repleases the page that will not be accessed for the longest time. It is not practicable because there is no way to know when a page will be refered.
+* **LRU** The page with the oldest access(reference) on the page table will be repleaced.
 
 ## Getting Started
 
