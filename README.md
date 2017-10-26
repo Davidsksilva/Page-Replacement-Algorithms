@@ -27,13 +27,13 @@ G++ or compatible installed.
 To run the code in LINUX, in the directoy file:
 
 ```
-makenext.
+make
 ```
 
 And next:
 
 ```
-./pagernext.eplacement
+./build/pagereplacement
 ```
 
 ## Built With
@@ -46,7 +46,7 @@ And next:
 
 ## Special Thanks
 
-Special thanks to my girlfriend Nadja, for the moral suport!
+Special thanks to my girlfriend Nadja, for the moral support, and [Avin1cius](https://github.com/Avin1cius) for the makefile!
 
 ## License
 
