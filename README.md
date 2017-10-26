@@ -30,7 +30,7 @@ To run the code in LINUX, in the directoy file:
 makenext.
 ```
 
-And repeat
+And next:
 
 ```
 ./pagernext.eplacement
