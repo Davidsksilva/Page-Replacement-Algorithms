@@ -2,6 +2,12 @@
 
 This code is a project for the discipline Operational Systems, in the Federal University of Paraiba, Brazil.
 
+##Introduction
+
+When the computer refers to a page in the page table, sometimes the refered page is not located in the table. If there is a free block in the page table, the refered page will be loaded into that block, but when the table is full, and the refered page is not there, a page replacement will be needed. We will cover three of them:
+
+*FIFO* When a page replacement is needed, the oldest(first) page in the table will be replaced by the refered page.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
