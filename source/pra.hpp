@@ -15,7 +15,6 @@ class PRA{
   int pageLacks = 0;
   int checkTableEmpty(void);
   int checkInTable(int);
-  bool isInQueue(std::queue <int>,int);
   void getData(std::string);
   void resetTable();
 public:
