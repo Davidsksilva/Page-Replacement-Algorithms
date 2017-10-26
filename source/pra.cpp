@@ -62,7 +62,6 @@ void PRA::OTM(){ // OTM Algorithm
   resetTable();
   pageLacks=0;
   for(unsigned int i=0;i<Sequence->size(); i++){
-    //std::cout<<"["<<Table[0].id<<","<<Table[1].id<<","<<Table[2].id<<"]"<<std::endl;
     if(checkInTable((*Sequence)[i]) == -1){ // If sequence number is not in Table
       pageLacks++;
       if(checkTableEmpty() != -1){ // If Table not full

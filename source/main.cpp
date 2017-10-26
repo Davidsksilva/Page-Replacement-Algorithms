@@ -2,7 +2,7 @@
 #include "pra.hpp"
 int main(){
 
-  PRA pra("input2.txt");
+  PRA pra("input.txt");
   pra.FIFO();
   pra.OTM();
   pra.LRU();
