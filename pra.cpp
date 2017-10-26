@@ -13,20 +13,26 @@ void PRA::getData(std::string fileName){
   while(file >> aux )
     Sequence->push_back(aux);
 }
+void PRA::resetTable(){
+  for(int i=0;i<nBlocks;i++){
+    Table[i].id=-1;
+    Table[i].counter=0;
+  }
+}
 PRA::PRA(std::string fileName){
   getData(fileName);
-  Table = new int[nBlocks];
+  Table = new Page[nBlocks];
 }
 int PRA::checkTableEmpty(){
   for(int i=0;i<nBlocks;i++){
-    if(Table[i] == -1)
+    if(Table[i].id == -1)
       return i;
   }
   return -1;
 }
 int PRA::checkInTable(int value){
   for(int i=0;i<nBlocks;i++){
-    if(Table[i] == value)
+    if(Table[i].id == value)
       return i;
   }
   return -1;
@@ -44,19 +50,19 @@ bool PRA::isInQueue(std::queue <int> ProcessQueue,int value)
   return false;
 }
 void PRA::FIFO(){
-  std::fill(Table, Table + nBlocks, -1);
+  resetTable();
   std::queue<int> fifo;
   int pos;
   for(unsigned int i=0;i<Sequence->size(); i++){
     if(checkInTable((*Sequence)[i]) == -1){ // If sequence number is not in Table
       pageLacks++;
       if(checkTableEmpty() != -1){ // If Table not full
-        Table[checkTableEmpty()]=(*Sequence)[i];
+        Table[checkTableEmpty()].id=(*Sequence)[i];
         fifo.push((*Sequence)[i]);
       }
       else{ // If Table full
         pos = checkInTable(fifo.front());
-        Table[pos] = (*Sequence)[i];
+        Table[pos].id = (*Sequence)[i];
         fifo.pop();
         fifo.push((*Sequence)[i]);
       }
@@ -65,19 +71,19 @@ void PRA::FIFO(){
   std::cout<<"FIFO "<<pageLacks<<std::endl;
 }
 void PRA::OTM(){
-  std::fill(Table, Table + nBlocks, -1);
+  resetTable();
   pageLacks=0;
   for(unsigned int i=0;i<Sequence->size(); i++){
     if(checkInTable((*Sequence)[i]) == -1){ // If sequence number is not in Table
       pageLacks++;
       if(checkTableEmpty() != -1){ // If Table not full
-        Table[checkTableEmpty()]=(*Sequence)[i];
+        Table[checkTableEmpty()].id=(*Sequence)[i];
       }
       else{ // If Table full
         int timeNextCall[nBlocks]={0};
         for(int j=0;j<nBlocks;j++){
           for(unsigned int u=i;u<Sequence->size();u++){
-              if((*Sequence)[u] == Table[j]){
+              if((*Sequence)[u] == Table[j].id){
                 timeNextCall[j]=u;
               }
           }
@@ -96,9 +102,40 @@ void PRA::OTM(){
             }
           }
         }
-        Table[posID]=(*Sequence)[i];
+        Table[posID].id=(*Sequence)[i];
       }
     }
   }
   std::cout<<"OTM "<<pageLacks<<std::endl;
+}
+void PRA::LRU(){
+  resetTable();
+  pageLacks=0;
+  for(unsigned int i=0;i<Sequence->size(); i++){
+    if(checkInTable((*Sequence)[i]) == -1){ // If sequence number is not in Table
+      pageLacks++;
+      if(checkTableEmpty() != -1){ // If Table not full
+        Table[checkTableEmpty()].id=(*Sequence)[i];
+        Table[checkTableEmpty()].counter=i;
+      }
+      else{ // If Table full
+        int posID=0;
+        int posMinCounter=INT_MAX;
+        for(int j=0;j<nBlocks;j++){
+          if(posMinCounter > Table[j].counter){
+            posID=j;
+            posMinCounter=Table[j].counter;
+          }
+        }
+        Table[posID].id=(*Sequence)[i];
+        Table[posID].counter=i;
+      }
+    }
+    else{ // If sequence number is on the table, update counter
+      Table[checkInTable((*Sequence)[i])].counter=i;
+    }
+  }
+  std::cout<<"LRU "<<pageLacks<<std::endl;
+
+
 }
