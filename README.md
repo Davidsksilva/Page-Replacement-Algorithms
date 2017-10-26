@@ -44,7 +44,7 @@ And next:
 
 * **David Simon** - *Whole Project* - [Davidsksilva](https://github.com/Davidsksilva)
 
-## Authors
+## Special Thanks
 
 Special thanks to my girlfrind Nadja, for the moral suport!
 
