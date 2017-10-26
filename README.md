@@ -46,9 +46,7 @@ And next:
 
 ## Special Thanks
 
-```diff
-+ Special thanks to my girlfriend Nadja, for the moral suport!
-```
+<span style="color:blue">some *Special thanks to my girlfriend Nadja, for the moral suport!* text</span>
 
 ## License
 
