@@ -44,6 +44,10 @@ And next:
 
 * **David Simon** - *Whole Project* - [Davidsksilva](https://github.com/Davidsksilva)
 
+## Authors
+
+Special thanks to my girlfrind Nadja, for the moral suport!
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
