@@ -46,7 +46,9 @@ And next:
 
 ## Special Thanks
 
-Special thanks to my girlfriend Nadja, for the moral suport!
+```diff
++ Special thanks to my girlfriend Nadja, for the moral suport!
+```
 
 ## License
 
