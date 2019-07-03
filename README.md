@@ -35,19 +35,3 @@ And next:
 ```
 ./build/pagereplacement
 ```
-
-## Built With
-
-* [Atom](https://atom.io/) - Used for code editting.
-
-## Authors
-
-* **David Simon** - *Whole Project* - [Davidsksilva](https://github.com/Davidsksilva)
-
-## Special Thanks
-
-Special thanks to my girlfriend Nadja, for the moral support, and [Avin1cius](https://github.com/Avin1cius) for the makefile!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
